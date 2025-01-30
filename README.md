@@ -15,7 +15,7 @@ This is a simple Go-based API that generates unique telemetry keys. It creates a
 Clone the repository and navigate to the project directory:
 
 ```sh
- git clone <repo-url>
+ git clone https://github.com/boredom1234/cursor-key-gen.git
  cd <repo-directory>
 ```
 
