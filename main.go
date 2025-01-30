@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/google/uuid"
@@ -46,9 +47,13 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	log.Println("Starting server on port 8080")
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080" // Fallback to 8080 for local development
+	}
+	log.Printf("Starting server on port %s", port)
 	http.HandleFunc("/generate", handler)
-	if err := http.ListenAndServe("0.0.0.0:8080", nil); err != nil {
+	if err := http.ListenAndServe(":"+port, nil); err != nil {
 		log.Fatalf("Server failed to start: %v", err)
 	}
 }
